@@ -1,0 +1,42 @@
+{
+  "name": "@tripsam/types",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    "./console": {
+      "types": "./dist/console/index.d.ts",
+      "import": "./dist/console/index.js"
+    },
+    "./console/*": {
+      "types": "./dist/console/*.d.ts",
+      "import": "./dist/console/*.js"
+    },
+    "./main": {
+      "types": "./dist/main/index.d.ts",
+      "import": "./dist/main/index.js"
+    },
+    "./main/*": {
+      "types": "./dist/main/*.d.ts",
+      "import": "./dist/main/*.js"
+    }
+  },
+  "files": [
+    "dist/"
+  ],
+  "types": "./dist/console/index.d.ts",
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0",
+    "typescript": "^5.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "zod": "^4.1.11"
+  }
+}

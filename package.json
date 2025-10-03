@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "workspaces": [
+    "packages/types",
+    "packages/console",
+    "packages/main"
+  ],
+  "scripts": {
+    "build": "sudo npm run build -w @tripsam/types",
+    "publish": "sudo npm publish --access public"
+  }
+}

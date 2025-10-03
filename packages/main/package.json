@@ -1,0 +1,22 @@
+{
+  "name": "@tripsam/main",
+  "version": "1.0.3",
+  "type": "module",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }
+  },
+  "files": ["dist/"],
+  "dependencies": {
+    "@tripsam/types": "^1.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p ./tsconfig.json",
+    "clean": "rimraf dist",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "rimraf": "^5.0.0"
+  },
+  "publishConfig": { "access": "public" }
+}
