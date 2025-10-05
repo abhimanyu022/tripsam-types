@@ -6,11 +6,11 @@ import { z } from "zod";
  * lat/lng: optional; filter locations whose bounding box contains the point
  * limit: number of results
  */
-export const SuggestLocation = z.object({
+export const suggest = z.object({
   q: z.string().trim().optional().default(""),
   lat: z.coerce.number().optional(),
   lng: z.coerce.number().optional(),
   limit: z.coerce.number().int().min(1).max(50).default(20),
 });
 
-export type SanitizedSuggestLocation = z.infer<typeof SuggestLocation>;
+export type SafeSuggest = z.output<typeof suggest>;

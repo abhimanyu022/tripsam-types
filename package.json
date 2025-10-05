@@ -1,10 +1,7 @@
 {
+  "name": "tripsam",
   "private": true,
-  "workspaces": [
-    "packages/types",
-    "packages/console",
-    "packages/main"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "build:types": "npm run -w @tripsam/types build",
     "build:console": "npm run -w @tripsam/console build",
@@ -14,5 +11,9 @@
     "publish:main": "npm publish --workspace @tripsam/main --access public",
     "view:console": "node -e \"import('@tripsam/console').then(m=>console.log(Object.keys(m)))\"",
     "view:main": "node -e \"import('@tripsam/main').then(m=>console.log(Object.keys(m)))\""
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
   }
 }

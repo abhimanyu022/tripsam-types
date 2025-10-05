@@ -1,19 +1,19 @@
 import { z } from "zod";
 
-export const SendOtp = z.object({
-  email: z.string().min(1, { message: 'required' }).email({ message: 'invalid' }).trim().toLowerCase(),
+export const sendOtp = z.object({
+  email: z.email('invalid').nonempty('required').trim().toLowerCase(),
 })
 
-export type SanitizedSendOtp = z.infer<typeof SendOtp>
+export type SafeSendOtp = z.output<typeof sendOtp>
 
-export const VerifyOtp = z.object({
+export const verifyOtp = z.object({
   otp: z.string().min(4, { message: 'required' }),
   email: z.string().optional(),
 })
 
-export type SanitizedVerifyOtp = z.infer<typeof VerifyOtp>
+export type SafeVerifyOtp = z.output<typeof verifyOtp>
 
-export const OboardUser = z.object({
+export const onboard = z.object({
   email: z.string().optional(),
   token: z.string().optional(),
   countryCode: z.string().optional().default('+91'),
@@ -25,5 +25,5 @@ export const OboardUser = z.object({
   password: z.string().nonempty('required').min(8, 'min').max(20, 'max'),
 })
 
-export type SanitizedOboardUser = z.infer<typeof OboardUser>
+export type SafeOnboard = z.output<typeof onboard>
 

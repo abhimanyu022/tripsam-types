@@ -1,7 +1,9 @@
-export * as Location from '@tripsam/types/console/location';
-export * as Role from '@tripsam/types/console/role';
-export * as Tag from '@tripsam/types/console/tag';
-export * as User from '@tripsam/types/console/user';
-export * as CustomerUser from '@tripsam/types/console/customer-user';
-export * as Auth from '@tripsam/types/console/auth';
-export * as ResetPassword from '@tripsam/types/console/reset-password';
+export * as Location from './location';
+export * as Auth from './auth';
+export * as ResetPassword from './reset-password';
+export * as Landmark from './landmark';
+export * as Tag from './tag';
+export * as Request from './request';
+export * as User from './user';
+export * as Role from './role';
+export * as CustomerUser from './customer-user';

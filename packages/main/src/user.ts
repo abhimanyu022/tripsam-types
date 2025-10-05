@@ -5,7 +5,7 @@ export const updatePassword = z.object({
   oldPassword: z.string().nonempty('required')
 })
 
-export type SanitizedUpdatePassword = z.infer<typeof updatePassword>
+export type SafeUpdatePassword = z.infer<typeof updatePassword>
 
 export const updateProfile = z.object({
   country: z.string().optional().default('+91'),
@@ -18,13 +18,13 @@ export const updateProfile = z.object({
     .regex(/^\d{7,12}$/, { message: 'invalid' }),
 })
 
-export type SanitizedUpdateProfile = z.infer<typeof updateProfile>
+export type SafeUpdateProfile = z.infer<typeof updateProfile>
 
-export const VerifyOtp = z.object({
+export const verifyOtp = z.object({
   otp: z.string().min(4, { message: 'required' })
 })
 
-export type SanitizedVerifyOtp = z.infer<typeof VerifyOtp>
+export type SafeVerifyOtp = z.infer<typeof verifyOtp>
 
 
 
