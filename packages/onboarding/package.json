@@ -1,20 +1,27 @@
 {
   "name": "@tripsam/onboarding",
-  "version": "1.0.15",
+  "version": "1.0.25",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+    "./safari": {
+      "types": "./dist/safari/index.d.ts",
+      "import": "./dist/safari/index.js",
+      "require": "./dist/safari/index.cjs"
+    },
+    "./common": {
+      "types": "./dist/common/index.d.ts",
+      "import": "./dist/common/index.js",
+      "require": "./dist/common/index.cjs"
     }
   },
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
-    "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist --clean --splitting false",
+    "build": "tsup src/safari/index.ts src/common/index.ts  --dts --format esm,cjs --out-dir dist --clean --splitting true",
     "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run build"
   },
@@ -27,5 +34,7 @@
     "rimraf": "^5.0.0",
     "zod": "^4.1.11"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  }
 }

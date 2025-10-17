@@ -6,10 +6,27 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "declaration": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@tripsam/onboarding/safari": [
+        "safari"
+      ],
+      "@tripsam/onboarding/safari/*": [
+        "safari/*"
+      ],
+      "@tripsam/onboarding/common": [
+        "common"
+      ],
+      "@tripsam/onboarding/common/*": [
+        "common/*"
+      ]
+    },
     "declarationDir": "./dist",
     "strict": true,
     "skipLibCheck": true,
     "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

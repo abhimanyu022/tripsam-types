@@ -36,9 +36,9 @@ export const pickupLandmark = z.object({
 })
 
 export const save = z.object({
-  locationId: z.string(),
-  safariLocation: z.string(),
-  pickupLocation: z.string(),
+  locationId: z.string().trim().nonempty('required'),
+  safariLocation: z.string().trim().nonempty('required'),
+  pickupLocation: z.string().trim().nonempty('required'),
   pickupLandmarks: z.array(pickupLandmark)
 })
 
