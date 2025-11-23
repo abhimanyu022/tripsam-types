@@ -6,6 +6,7 @@ export * as VehicleDetails from './vehicle-details';
 export * as DriverDetails from './driver-details';
 export * as BusinessDetails from './business-details';
 export * as PersonalDetails from './personal-details';
+export * as Step from './step';
 
 
 

@@ -9,7 +9,7 @@ export const me = z.object({
   maxCapacity: z.coerce.number().min(2).max(15)
 });
 
-export const create = z.object({
+export const save = z.object({
   vehicleName: z.string().trim().nonempty('required'),
   registrationNumber: z.string().trim().nonempty('required').toUpperCase(),
   serviceRoutine: z.coerce.number('invalid'),
@@ -17,9 +17,6 @@ export const create = z.object({
   maxCapacity: z.coerce.number('invalid').min(2, 'min').max(15, 'max')
 });
 
-export const meList = z.array(me)
-
 export type SafeMe = z.infer<typeof me>;
-export type SafeCreate = z.output<typeof create>
-export type SafeList = z.output<typeof meList>
+export type SafeSave = z.output<typeof save>
 
