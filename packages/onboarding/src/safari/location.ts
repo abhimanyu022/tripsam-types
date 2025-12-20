@@ -25,10 +25,7 @@ export const create = z.object({
 
 export const update = z.object({
   id: z.string().optional().default(''),
-  locationId: z.string().trim().nonempty('required'),
-  safariLocation: z.string().trim().nonempty('required'),
-  pickupLocation: z.string().trim().nonempty('required'),
-  pickupLandmarks: z.array(pickupLandmark)
+  ...create.shape,
 })
 
 export type SafeGet = z.output<typeof get>;

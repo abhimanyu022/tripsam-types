@@ -1,21 +1,25 @@
 import { z } from "zod";
 
-export const me = z.object({
+export const languageKnownEnum = z.enum(['english', 'hindi', 'gujurati', 'marathi']);
+
+export const get = z.object({
   id: z.string(),
   driverName: z.string().trim(),
-  licenseNumber: z.string().trim().toUpperCase(),
-  experience: z.coerce.number()
+  drivingLicenseNumber: z.string().trim().toUpperCase(),
+  experience: z.coerce.number(),
+  languagesKnown: z.array(languageKnownEnum)
 });
 
-export const create = z.object({
+export const save = z.object({
   driverName: z.string().trim().nonempty('required'),
-  licenseNumber: z.string().trim().nonempty('required').toUpperCase(),
-  experience: z.coerce.number().min(1, 'min')
+  drivingLicenseNumber: z.string().trim().nonempty('required').toUpperCase(),
+  experience: z.coerce.number().min(1, 'min'),
+  languagesKnown: z.array(languageKnownEnum)
 });
 
-export const meList = z.array(me)
+export const getList = z.array(get)
 
-export type SafeMe = z.infer<typeof me>;
-export type SafeCreate = z.output<typeof create>
-export type SafeList = z.output<typeof meList>
+export type SafeGet = z.infer<typeof get>;
+export type SafeSave = z.output<typeof save>
+export type SafeList = z.output<typeof getList>
 

@@ -1,6 +1,6 @@
 {
   "name": "@tripsam/onboarding",
-  "version": "1.0.53",
+  "version": "1.0.74",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

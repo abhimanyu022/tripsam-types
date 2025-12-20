@@ -16,24 +16,24 @@ export const time12h = z
     return h * 60 + parseInt(mm, 10); // minutes since midnight
   });
 
-export const update = z.object({
-  id: z.string().trim().optional(),
-  name: z.string().trim().nonempty('required'),
-  description: z.string().trim().optional(),
-  startTime: time12h,
-  endTime: time12h,
-  minHour: z.coerce.number('invalid')
-})
-
 export const create = z.object({
   name: z.string().trim().nonempty('required'),
-  description: z.string().trim().optional(),
-  startTime: time12h,
-  endTime: time12h,
-  minHour: z.coerce.number('invalid')
+  description: z.string().trim().optional().default(''),
+  startTime: z.coerce.number().min(0, 'invalid').max(1439, 'invalid'),
+  endTime: z.coerce.number().min(0, 'invalid').max(1439, 'invalid'),
+  minHour: z.coerce.number().optional().default(3)
 })
 
-export const me = z.object({
+export const update = z.object({
+  id: z.string().trim().optional(),
+  ...create.shape,
+})
+
+export const remove = z.object({
+  id: z.string().trim()
+})
+
+export const get = z.object({
   id: z.string().trim(),
   name: z.string().trim().nonempty('required'),
   description: z.string().trim().optional(),
@@ -42,9 +42,10 @@ export const me = z.object({
   minHour: z.coerce.number('invalid')
 })
 
-export const meList = z.array(me)
+export const list = z.array(get)
 
-export type SafeMe = z.output<typeof me>;
-export type SafeList = z.output<typeof meList>;
+export type SafeGet = z.output<typeof get>;
+export type SafeList = z.output<typeof list>;
 export type SafeCreate = z.output<typeof create>;
 export type SafeUpdate = z.output<typeof update>;
+export type SafeRemove = z.output<typeof remove>;

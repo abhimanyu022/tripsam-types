@@ -30,11 +30,8 @@ export const create = z.object({
 });
 
 export const update = z.object({
+  ...create.shape,
   id: z.string().optional().default(''),
-  name: z.string().nonempty('required').trim(),
-  countryCode: z.string().optional().default('+91'),
-  phone: z.string().nonempty('required'),
-  type: z.string().nonempty('required'),
 });
 
 export type SafeGet = z.infer<typeof get>;
