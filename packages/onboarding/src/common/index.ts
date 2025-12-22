@@ -2,4 +2,5 @@
 export * as VerifyEmail from './verify-email';
 export * as Onboard from './onboard';
 export * as LocationAutoSuggest from './location';
+export * as DocumentType from './document';
 
