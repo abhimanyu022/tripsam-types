@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const languageKnownEnum = z.enum(['english', 'hindi', 'gujurati', 'marathi']);
+export const languageKnownEnum = z.enum(['english', 'hindi', 'gujarati', 'marathi']);
 
 export const get = z.object({
   id: z.string(),
