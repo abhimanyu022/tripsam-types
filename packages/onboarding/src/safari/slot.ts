@@ -21,7 +21,7 @@ export const create = z.object({
   description: z.string().trim().optional().default(''),
   startTime: z.coerce.number().min(0, 'invalid').max(1439, 'invalid'),
   endTime: z.coerce.number().min(0, 'invalid').max(1439, 'invalid'),
-  minHour: z.coerce.number().optional().default(3)
+  minHour: z.coerce.number().min(1, 'minNumber').max(24, 'maxNumber').optional().default(3)
 })
 
 export const update = z.object({

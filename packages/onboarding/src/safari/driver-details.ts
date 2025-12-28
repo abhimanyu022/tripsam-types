@@ -11,10 +11,13 @@ export const get = z.object({
 });
 
 export const save = z.object({
-  driverName: z.string().trim().nonempty('required'),
-  drivingLicenseNumber: z.string().trim().nonempty('required').toUpperCase(),
-  experience: z.coerce.number().min(1, 'min'),
-  languagesKnown: z.array(languageKnownEnum)
+  driverName: z.string().trim().min(2, 'min').max(50, 'max').nonempty('required'),
+  drivingLicenseNumber: z.string().trim().nonempty('required').min(6, 'min').max(20, 'max').toUpperCase(),
+  experience: z.coerce.number().min(1, 'min').max(30, 'max').default(1),
+  languagesKnown: z.array(languageKnownEnum).nonempty('required').refine(
+    (langs) => langs.every(lang => languageKnownEnum.options.includes(lang)),
+    { message: 'invalid' }
+  )
 });
 
 export const getList = z.array(get)

@@ -23,10 +23,10 @@ export const get = z.object({
 });
 
 export const create = z.object({
-  name: z.string().nonempty('required').trim(),
-  countryCode: z.string().optional().default('+91'),
-  phone: z.string().nonempty('required'),
-  type: z.string().nonempty('required'),
+  name: z.string().trim().nonempty('required').min(2, 'min').max(50, 'max'),
+  countryCode: z.string().trim().min(2, 'min').max(5, 'max').default('+91'),
+  phone: z.string().trim().nonempty('required').min(5, 'min').max(15, 'max'),
+  type: z.enum(Object.keys(safariTypes) as Array<keyof typeof safariTypes>, 'invalid'),
 });
 
 export const update = z.object({

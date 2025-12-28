@@ -2,13 +2,13 @@ import { z } from "zod";
 
 export const get = z.object({
   id: z.string(),
-  baseRate: z.coerce.number().default(0),
+  baseRate: z.coerce.number().default(1),
   discount: z.coerce.number().default(0),
 });
 
 export const create = z.object({
-  baseRate: z.coerce.number().default(0),
-  discount: z.coerce.number().default(0),
+  baseRate: z.coerce.number('numberOnly').min(1, 'minNumber').max(50000, 'maxNumber').default(1),
+  discount: z.coerce.number('numberOnly').min(0, 'minNumber').max(90, 'maxNumber').default(0),
 });
 
 export const update = z.object({

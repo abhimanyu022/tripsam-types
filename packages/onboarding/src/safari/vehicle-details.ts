@@ -10,11 +10,11 @@ export const get = z.object({
 });
 
 export const save = z.object({
-  vehicleName: z.string().trim().nonempty('required'),
-  registrationId: z.string().trim().nonempty('required').toUpperCase(),
-  serviceRoutineInDays: z.coerce.number('invalid'),
-  operationalSince: z.coerce.number('invalid').min(2010, 'min'),
-  maxCapacity: z.coerce.number('invalid').min(2, 'min').max(15, 'max')
+  vehicleName: z.string().trim().nonempty('required').min(2, 'min').max(50, 'max'),
+  registrationId: z.string().trim().nonempty('required').min(1, 'min').max(25, 'max').toUpperCase(),
+  serviceRoutineInDays: z.coerce.number('numberOnly').min(1, 'minNumber').max(60, 'maxNumber'),
+  operationalSince: z.coerce.number('numberOnly').min(2010, 'minNumber').max(new Date().getFullYear(), 'maxNumber'),
+  maxCapacity: z.coerce.number('numberOnly').min(2, 'minNumber').max(15, 'maxNumber')
 });
 
 export const list = z.array(get)

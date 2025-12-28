@@ -12,13 +12,13 @@ export const get = z.object({
 });
 
 export const create = z.object({
-  bankAccountNumber: z.string().trim().nonempty('required').min(9, 'min'),
-  bankName: z.string().trim().toUpperCase().nonempty('required').min(3, 'min'),
-  accountHolderName: z.string().trim().toUpperCase().nonempty('required'),
-  bankIFSCCode: z.string().trim().toUpperCase().min(7, 'min').nonempty('required'),
-  adhaarNumber: z.string().trim().nonempty('required').min(12, 'min'),
-  GstNumber: z.string().trim().optional().default(''),
-  businessIdNumber: z.string().trim().optional().default(''),
+  bankAccountNumber: z.string().trim().nonempty('required').min(6, 'min').max(20, 'max'),
+  accountHolderName: z.string().trim().nonempty('required').min(2, 'min').max(50, 'max').toUpperCase(),
+  bankName: z.string().trim().toUpperCase().nonempty('required').min(3, 'min').max(50, 'max'),
+  bankIFSCCode: z.string().trim().nonempty('required').min(7, 'min').max(11, 'max').toUpperCase(),
+  adhaarNumber: z.string().trim().nonempty('required').min(12, 'min').max(20, 'max'),
+  GstNumber: z.string().trim().min(8, 'min').max(20, 'max').default('').optional(),
+  businessIdNumber: z.string().trim().min(8, 'min').max(20, 'max').optional().default('').optional(),
 });
 
 export const update = z.object({

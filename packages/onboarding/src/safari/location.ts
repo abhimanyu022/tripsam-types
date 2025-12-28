@@ -18,8 +18,8 @@ export const get = z.object({
 
 export const create = z.object({
   locationId: z.string().trim().nonempty('required'),
-  safariLocation: z.string().trim().nonempty('required'),
-  pickupLocation: z.string().trim().nonempty('required'),
+  safariLocation: z.string().trim().nonempty('required').min(2, 'min').max(50, 'max'),
+  pickupLocation: z.string().trim().nonempty('required').min(2, 'min').max(50, 'max'),
   pickupLandmarks: z.array(pickupLandmark)
 })
 
