@@ -18,7 +18,7 @@ export const time12h = z
 
 export const create = z.object({
   name: z.string().trim().nonempty('required'),
-  description: z.string().trim().optional().default(''),
+  description: z.string().trim().min(3, 'min').max(200, 'max').optional().or(z.literal('')),
   startTime: z.coerce.number().min(0, 'invalid').max(1439, 'invalid'),
   endTime: z.coerce.number().min(0, 'invalid').max(1439, 'invalid'),
   minHour: z.coerce.number().min(1, 'minNumber').max(24, 'maxNumber').optional().default(3)
