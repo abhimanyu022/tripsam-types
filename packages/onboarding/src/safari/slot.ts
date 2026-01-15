@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 const TIME_12H = /^(0?[1-9]|1[0-2]):([0-5][0-9])(?:[\u00A0\u202F\s]*)?(AM|PM)$/i;
+const TIME_24H = /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/;
 
 export const time12h = z
   .string()
@@ -14,6 +15,17 @@ export const time12h = z
     let h = parseInt(hh, 10) % 12; // 12 -> 0
     if (meridian === "PM") h += 12;
     return h * 60 + parseInt(mm, 10); // minutes since midnight
+  });
+
+export const time24h = z
+  .string()
+  .trim()
+  .regex(TIME_24H, "invalid")
+  .transform((v) => {
+    const m = v.match(TIME_24H)!;
+    const hh = parseInt(m[1], 10); // hour (0-23)
+    const mm = parseInt(m[2], 10); // minutes
+    return hh * 60 + mm; // minutes since midnight
   });
 
 export const create = z.object({
