@@ -7,6 +7,8 @@ export const get = z.object({
   driverName: z.string().trim(),
   drivingLicenseNumber: z.string().trim().toUpperCase(),
   experience: z.coerce.number(),
+  dlUploadedImg1: z.string().trim().nullable(),
+  dlUploadedImg2: z.string().trim().nullable(),
   languagesKnown: z.array(languageKnownEnum)
 });
 

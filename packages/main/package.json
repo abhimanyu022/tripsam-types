@@ -1,6 +1,6 @@
 {
   "name": "@tripsam/main",
-  "version": "2.0.1",
+  "version": "2.0.6",
   "type": "module",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -12,7 +12,9 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "build": "tsup src/index.ts --dts --format esm,cjs --out-dir dist --clean --splitting false",
     "clean": "rimraf dist",
@@ -27,5 +29,7 @@
     "rimraf": "^5.0.0",
     "zod": "^4.1.11"
   },
-  "publishConfig": { "access": "public" }
+  "publishConfig": {
+    "access": "public"
+  }
 }

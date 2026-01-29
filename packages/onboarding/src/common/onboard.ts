@@ -32,7 +32,7 @@ export const onboardUser = z.object({
 export const updateUser = z.object({
   fullName: z.string().trim().nonempty('required').min(2, 'min').max(50, 'max'),
   countryCode: z.string().trim().min(2, 'min').max(5, 'max').default('+91'),
-  phone: z.string().trim().nonempty('required').min(5, 'min').max(15, 'max'),
+  phone: z.string().trim().nonempty('required').min(10, 'min').max(15, 'max'),
 });
 
 export const list = z.array(onboard);

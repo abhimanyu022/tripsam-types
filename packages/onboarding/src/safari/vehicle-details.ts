@@ -6,7 +6,8 @@ export const get = z.object({
   registrationId: z.string().trim().toUpperCase(),
   serviceRoutineInDays: z.coerce.number(),
   operationalSince: z.coerce.number().min(2010),
-  maxCapacity: z.coerce.number().min(2).max(15)
+  maxCapacity: z.coerce.number().min(2).max(15),
+  rcUploadedImg: z.string().trim().nullable()
 });
 
 export const save = z.object({
