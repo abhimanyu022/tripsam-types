@@ -6,6 +6,9 @@ export const safariSearchSchema = z.object({
   kids: z.coerce.number().min(0).default(1),
   infants: z.coerce.number().min(0).default(0),
   date: z.string().optional().default(''),
+  safariTypes: z.string().optional().default(''),
+  priceMin: z.coerce.number().min(0).default(0),
+  priceMax: z.coerce.number().min(0).default(0),
 });
 
 export type SafariSearch = z.infer<typeof safariSearchSchema>;
