@@ -1,13 +1,12 @@
 import { z } from "zod";
 
 export const safariTypes = {
-  leopard_safari: "leopardSafari",
-  tiger_safari: "tigerSafari",
-  bird_watching: "birdWatching",
-  village_safari: "villageSafari",
-  lion_safari: "lionSafari",
-  jungle_safari: "jungleSafari",
-  other: "other",
+  LEOPARD_SAFARI: "leopardSafari",
+  TIGER_SAFARI: "tigerSafari",
+  BIRD_WATCHING_SAFARI: "birdWatchingSafari",
+  VILLAGE_SAFARI: "villageSafari",
+  LION_SAFARI: "lionSafari",
+  JUNGLE_SAFARI: "jungleSafari"
 } as const;
 
 export const safeSas = z.enum(Object.keys(safariTypes) as Array<keyof typeof safariTypes>);
@@ -44,6 +43,6 @@ export const defaultBasicDetails: SafeGet = {
   countryCode: '+91',
   phone: '',
   isPhoneVerified: false,
-  type: 'leopard_safari',
+  type: 'LEOPARD_SAFARI',
 }
 

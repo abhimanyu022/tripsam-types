@@ -1,4 +1,4 @@
-import z, { url } from "zod";
+import z from "zod";
 
 export const SafariDocuments = z.enum(
   ['aadhaar_front',
@@ -6,7 +6,14 @@ export const SafariDocuments = z.enum(
     'driving_license_front',
     'driving_license_back',
     'vehicle_rc',
-    'pan_card']);
+    'pan_card',
+    'safari_photo_main',
+    'safari_photo_1',
+    'safari_photo_2',
+    'safari_photo_3',
+    'safari_photo_4',
+  ] as const
+);
 
 export type SafeSafariDocuments = z.infer<typeof SafariDocuments>;
 
