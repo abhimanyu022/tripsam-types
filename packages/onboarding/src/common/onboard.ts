@@ -1,13 +1,12 @@
 import { z } from "zod";
 
 export const safariTypes = {
-  leopard_safari: "leopardSafari",
-  tiger_safari: "tigerSafari",
-  bird_watching: "birdWatching",
-  village_safari: "villageSafari",
-  lion_safari: "lionSafari",
-  jungle_safari: "jungleSafari",
-  other: "other",
+  LEOPARD_SAFARI: "leopardSafari",
+  TIGER_SAFARI: "tigerSafari",
+  BIRD_WATCHING_SAFARI: "birdWatching",
+  VILLAGE_SAFARI: "villageSafari",
+  LION_SAFARI: "lionSafari",
+  JUNGLE_SAFARI: "jungleSafari",
 } as const;
 
 export const safeSas = z.enum(Object.keys(safariTypes) as Array<keyof typeof safariTypes>);
@@ -16,7 +15,8 @@ export const onboard = z.object({
   id: z.string(),
   status: z.enum(['pending', 'in_review', 'approved', 'rejected', 'completed']),
   remark: z.string().optional().default(''),
-  type: safeSas,
+  type: safeSas.array().default([]),
+  safariName: z.string().trim().nonempty('required'),
   currentStep: z.string().default('1.0'),
 })
 
