@@ -1,7 +1,9 @@
 {
   "name": "tripsam",
   "private": true,
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build:onboarding": "npm run -w @tripsam/onboarding build",
     "build:console": "npm run -w @tripsam/console build",
@@ -15,5 +17,8 @@
   "devDependencies": {
     "tsup": "^8.5.0",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@tripsam/main": "^2.0.18"
   }
 }
